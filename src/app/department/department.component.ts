@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from '../login.service';
 
 @Component({
   selector: 'app-department',
@@ -8,7 +7,7 @@ import { LoginService } from '../login.service';
 })
 export class DepartmentComponent implements OnInit {
 
-  constructor(private loginservice:LoginService)
+  constructor()
   {
     console.log("loginservice  in Department")
   }
