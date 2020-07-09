@@ -4,7 +4,7 @@ import {HttpClient } from '@angular/common/http';
 import { EmployeeModule } from './employee/employee.module';
 
 @Injectable({
-  providedIn: EmployeeModule
+  providedIn: "root"
 //providedIn: 'root' ::used when you wants  to share  single  instance across 1 app.
 //providedIn: 'any' ::used when you wants to have single instance for all eagerly loaded component.
 })
