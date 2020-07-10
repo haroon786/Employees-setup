@@ -17,6 +17,12 @@
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table> -->
 
+<label>Add Employee
+  <input #inputemployee>
+</label>
+<button (click)="add(inputemployee.vlaue); inputemployee.value=''">
+  add
+</button>
 <table *ngIf="Employees">
   <thead>
     <tr>
@@ -26,7 +32,7 @@
   </thead>
   <tbody>
   <tr *ngFor="let hero of Employees" (click)="onSelect(hero)">
-    
+
     <td routerLink="/detail/{{hero.id}}">{{hero.id}}</td>
     <td>{{hero.name}}</td>
   </tr>

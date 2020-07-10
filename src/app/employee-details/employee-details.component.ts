@@ -10,8 +10,8 @@ import { IEmployee } from '../modal/employee-modal';
 })
 export class EmployeeDetailsComponent implements OnInit {
 
-  //@Input() selectedHere;
-  selectedHere:IEmployee
+  @Input() selectedHere;
+ // selectedHere:IEmployee
   constructor(private route:ActivatedRoute,private location:Location,private employeeservice:EmployeeService)
    {
 
@@ -27,5 +27,9 @@ export class EmployeeDetailsComponent implements OnInit {
     }
     goBack(): void {
       this.location.back();
+    }
+    save():void
+    {
+      this.employeeservice.updateEmployee(this.selectedHere)
     }
 }

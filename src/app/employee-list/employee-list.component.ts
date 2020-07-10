@@ -22,4 +22,11 @@ export class EmployeeListComponent implements OnInit {
     this.messageservice.add(`employee fetched:${employee.name}`)
     console.log(this.selectedHere);
   }
+  add(name:string):void
+  {
+    name=name.trim();
+    if(!name){return;}
+    this.employeeservice.addEmployee({ name } as IEmployee)
+    .subscribe(emploee=>this.Employees.push(emploee))
+  }
 }
