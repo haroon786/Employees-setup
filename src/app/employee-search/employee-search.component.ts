@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Observable,Subject} from 'rxjs';
-import {debounceTime,distinctUntilChanged,switchMap} from 'rxjs/operators';
+import {debounceTime,distinctUntilChanged,switchMap, tap} from 'rxjs/operators';
 import {EmployeeService} from '../Shared-Service/employee/employee.service';
 import { IEmployee } from '../modal/employee-modal';
 
@@ -22,9 +22,11 @@ export class EmployeeSearchComponent implements OnInit {
 
   ngOnInit(): void {
     this.employess$=this.searchname$.pipe(
-      debounceTime(1000),
+      debounceTime(3000),
       distinctUntilChanged(),
-      switchMap((term:string)=>this.employeeservice.searchName(term)),
+      tap(_=>console.log(this.employess$)),
+      switchMap((term:string)=>{console.log(term);
+        return this.employeeservice.searchName(term)}),
     )
   }
 
