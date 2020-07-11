@@ -29,4 +29,8 @@ export class EmployeeListComponent implements OnInit {
     this.employeeservice.addEmployee({ name } as IEmployee)
     .subscribe(emploee=>this.Employees.push(emploee))
   }
+  delete(hero: IEmployee): void {
+    this.Employees = this.Employees.filter(h => h !== hero);
+    this.employeeservice.deleteHero(hero).subscribe();
+  }
 }

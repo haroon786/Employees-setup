@@ -12,13 +12,15 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './in-memory-data.service';
 import {HttpClientModule} from '@angular/common/http';
+import { EmployeeSearchComponent } from './employee-search/employee-search.component';
 @NgModule({
   declarations: [
     AppComponent,
     EmployeeListComponent,
     EmployeeDetailsComponent,
     MessagesComponent,
-    DashboardComponent
+    DashboardComponent,
+    EmployeeSearchComponent
   ],
   imports: [
     BrowserModule,

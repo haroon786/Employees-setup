@@ -1,0 +1,12 @@
+<p>employee-search works!</p>
+<input #searchbox id="search-box" (input)="search(searchbox.value)"/>
+
+
+<ul>
+  <li *ngFor="let employee of  employess$ |async">
+    <a routerLink="/detail/{{employee.id}}">
+      {{employee.name}}
+    </a>
+
+  </li>
+</ul>

@@ -46,6 +46,15 @@ export class EmployeeService
         catchError(this.handleError<IEmployee>('addemployee'))
       )
   }
+  deleteHero(hero: IEmployee | number): Observable<IEmployee> {
+    const id = typeof hero === 'number' ? hero : hero.id;
+    const url = `${this.employeesUrl}/${id}`;
+
+    return this.http.delete<IEmployee>(url, this.httpOptions).pipe(
+      tap(_ => this.log(`deleted hero id=${id}`)),
+      catchError(this.handleError<IEmployee>('deleteHero'))
+    );
+  }
   updateEmployee(employee:IEmployee):Observable<any>
   {
     return this.http.put(this.employeesUrl,employee,this.httpOptions)
@@ -54,6 +63,15 @@ export class EmployeeService
     this.message.add(`HeroService: ${message}`);
   }
 
+  searchName(name:string):Observable<IEmployee[]>
+  {
+    if(!name.trim())
+    {
+      return of([]);
+    }
+    return this.http.get<IEmployee[]>(`${this.employeesUrl}/?name=${name}`)
+  }
+  
   private handleError<T>(operation='operation',result?:T)
   {
     return (error: any): Observable<T> => {

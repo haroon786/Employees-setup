@@ -18,7 +18,7 @@
 </table> -->
 
 <label>Add Employee
-  <input #inputemployee>
+  <input #inputemployee />
 </label>
 <button (click)="add(inputemployee.vlaue); inputemployee.value=''">
   add
@@ -35,6 +35,8 @@
 
     <td routerLink="/detail/{{hero.id}}">{{hero.id}}</td>
     <td>{{hero.name}}</td>
+    <button class="delete" title="delete hero"
+  (click)="delete(hero)">x</button>
   </tr>
   <tbody>
 </table>
